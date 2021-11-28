@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by TEMPLATED
+http://templated.co
+Released for free under the Creative Commons Attribution License
+Name       : LadyTulip
+Description: A two-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20131127
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
+<link href="{% static 'default.css'	%}" rel="stylesheet" type="text/css" media="all" />
+<link href="{% static 'fonts.css' %}" rel="stylesheet" type="text/css" media="all" />
+<!--[if IE 6]>
+<link href="{% static 'default_ie6.css' %}" rel="stylesheet" type="text/css" />
+<![endif]-->
+</head>
+<body>
+
+<div  class="container">
+<!-- estadao -->
+
+    <div style="overflow: hidden;">
+        <div id="page" class="title">
+            <img class="column1" src="{% static 'images/evelyn.jpg' %}" width="241" height="346" alt="" />
+            <p class="column1 style="padding-left: 100px">Os Sete Maridos de Evelyn Hugo</p>
+        </div>
+    </div>
+</div>
+
+<script>
+	function openTab(tabName) {
+	  var i, x;
+	  x = document.getElementsByClassName("containerTab");
+	  for (i = 0; i < x.length; i++) {
+		x[i].style.display = "none";
+	  }
+	  document.getElementById(tabName).style.display = "block";
+	}
+
+	function orderByDate(url, frameId) {
+	  document.getElementById(frameId).src = url;
+	}
+</script>
+
+</body>
+
+
+
+</html>
