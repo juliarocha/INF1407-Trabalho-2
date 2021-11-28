@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lista Livros</title>
+    <link rel="stylesheet" href="{% static 'default.css' %}">
+</head>
+
+<body>
+    {% include 'livros/links.html' %}
+    <div class="container">
+        <h1 class="container">Seus Livros</h1>
+        <table>
+            <tr>
+                <th>Título</th>
+                <th>Autor(a)</th>
+                <th>Editora</th>
+                <th>Status</th>
+                <th>Review _/5</th>
+                <th>Ano</th>
+                <th>Ações disponíveis</th>
+            </tr>
+            {% for livro in livros %}
+            <tr>
+                <td>{{livro.name}}</td>
+                <td>{{livro.author}}</td>
+                <td>{{livro.publishingHouse}}</td>
+                <td>{{livro.readStatus}}</td>
+                <td>{{livro.review}}</td>
+                <td>{{livro.year}}</td>
+                <td>
+                    {% if user.is_authenticated %}
+                    {% block content %}
+                    <a href="{% url 'livros:atualiza-livro' pk=livro.id %}">Atualizar |
+                        <a href="{% url 'livros:apaga-livro' pk=livro.id%}">Excluir</a></a>
+                    {% endblock %}
+                    {% else %}
+                    <p>Faça o Login para realizar ações</p>
+                    {% endif %}
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <th colspan="5">Ainda não tem livros cadastrados</th>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+
+</html>

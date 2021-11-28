@@ -1,69 +1,54 @@
 {% load static %}
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<!--
-Design by TEMPLATED
-http://templated.co
-Released for free under the Creative Commons Attribution License
-Name       : LadyTulip
-Description: A two-column, fixed-width design with dark color scheme.
-Version    : 1.0
-Released   : 20131127
--->
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title></title>
-<meta name="keywords" content="" />
-<meta name="description" content="" />
-<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
-<link href="{% static 'accounts.css'	%}" rel="stylesheet" type="text/css" media="all" />
-<link href="{% static 'fonts.css' %}" rel="stylesheet" type="text/css" media="all" />
-<!--[if IE 6]>
-<link href="{% static 'default_ie6.css' %}" rel="stylesheet" type="text/css" />
-<![endif]-->
+  <title>Login</title>
+  <link rel="stylesheet" href="{% static 'account.css' %}">
 </head>
+
 <body>
 
-    <div class="login-page">
-      <div class="form">
-        <form class="login-form form-group" method="post">
-            {% csrf_token %}
-          <input type="text" placeholder="username" name="username" id ="id_username" onfocusout="Request();"/>
-          <input type="password" placeholder="password" name="password"/>
-            <p id="erroCadastro"></p>
-          <button type="submit", class="btn btn-success">login</button>
-          <p class="message">Not registered? <a href="/register">Create an account</a></p>
-        </form>
-      </div>
+  <div class="container">
+    <div class="card">
+      <form class="box" method="post">
+        <h1>Login</h1>
+        {% csrf_token %}
+        <p class="text-muted"> Entre com seu usuário e senha</p>
+        <input type="text" placeholder="Usuário" name="username" id="id_username" onfocusout="Request();" />
+        <input type="password" placeholder="Senha" name="password" />
+        <p id="erroCadastro"></p>
+        <input type="submit" value="Entrar"></input>
+        <p class="text-muted">Não possui conta? <a href="/register">Crie uma conta</a></p>
+      </form>
     </div>
+  </div>
 
 
 
-<script>
+  <script>
+    function Request() {
+      document.getElementById("erroCadastro").innerHTML = ""
+      var campoUsername = document.getElementById('id_username');
+      fetch(url)
+        .then(resposta => resposta.json())
+        .then(data => mostrarResposta(data))
+        .catch(erro => console.error(erro));
+    }
 
+    function mostrarResposta(data) {
+      if (!data.existe) {
+        document.getElementById("erroCadastro").innerHTML = "usuário não cadastrado"
+      }
+    }
 
-
-        function Request() {
-            document.getElementById("erroCadastro").innerHTML = ""
-            var campoUsername = document.getElementById('id_username');
-            var url = "{% url 'validateUsername' %}?username="+ encodeURIComponent(campoUsername.value)
-            fetch(url)
-                .then(resposta => resposta.json())
-                .then(data => mostrarResposta(data))
-                .catch(erro => console.error(erro));
-        }
-
-        function mostrarResposta(data) {
-            if(!data.existe){
-                document.getElementById("erroCadastro").innerHTML = "usuário não cadastrado"
-            }
-        }
-
-        $('.message a').click(function(){
-        $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
-        });
-
-</script>
+    $('.message a').click(function () {
+      $('form').animate({
+        height: "toggle",
+        opacity: "toggle"
+      }, "slow");
+    });
+  </script>
 
 
 
@@ -71,4 +56,5 @@ Released   : 20131127
 
 
 </body>
+
 </html>

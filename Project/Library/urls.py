@@ -1,12 +1,16 @@
 from django.urls import path
-from .views import index, results, register, loginPage, logoutUser, deleteUser, validateUsername
+from .views import register, loginPage, logoutUser, deleteUser, livroCreateView, livrosListView, livroUpdateView, livroDeleteView
+
+app_name = "livros"
 
 urlpatterns = [
-    path('', index, name='index'),
-    path('results/', results),
     path('register/', register, name="register"),
     path('login/', loginPage, name="login"),
     path('logout/', logoutUser, name='logout'),
     path('delete/', deleteUser, name='delete'),
-    path('validateUsername/', validateUsername, name="validateUsername"),
+
+    path('', livrosListView, name='home-livros'),
+    path('cria/', livroCreateView, name='cria-livros'),
+    path('atualiza/<int:pk>/', livroUpdateView, name='atualiza-livro'),
+    path('apaga/<int:pk>/', livroDeleteView, name='apaga-livro'),
 ]

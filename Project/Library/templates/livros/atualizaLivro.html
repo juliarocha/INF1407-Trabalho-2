@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Atualiza Livro</title>
+    <link rel="stylesheet" href="{% static 'admin.css' %}">
+</head>
+
+<body>
+    {% include 'livros/links.html' %}
+        <h1>Atualização de livro</h1>
+        <form class="card" method="post">
+            {% csrf_token %}
+            <table type="admin">
+                {{ livro.as_table }}
+            </table>
+            <input type="submit" value="Atualizar">
+        </form>
+        <button id="cancelButton">Cancelar</button>
+</body>
+
+</html>
+
+<script type="text/javascript">
+    document.getElementById("cancelButton").onclick = function () {
+        location.href = "/";
+    };
+</script>

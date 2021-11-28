@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Adicionar Livro</title>
+    <link rel="stylesheet" href="{% static 'admin.css' %}">
+</head>
+
+<body>
+    {% include 'livros/links.html' %}
+        <h1>Adicionar Livro</h1>
+        <form class="card" method="post">
+            {% csrf_token %}
+            <table type="admin">
+                {{ formulario.as_table }}
+            </table>
+            <input type="submit" value="Adicionar">
+        </form>
+        <button id="cancelButton">Cancelar</button>
+</body>
+
+</html>
+
+<script type="text/javascript">
+    document.getElementById("cancelButton").onclick = function () {
+        location.href = "/";
+    };
+</script>

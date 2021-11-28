@@ -1,0 +1,17 @@
+<!-- Para incluir esse fragmento de página HTML em uma página HTML use: { % include 'livros/links.html' % } -->
+{% load static %}
+<link rel="stylesheet" href="{% static 'links.css' %}">
+<div class="box">
+    <nav class="navMenu">
+        <a href="/">Home</a>
+        {% if user.is_authenticated %}
+        {% block content %}
+        <a href="{% url 'livros:cria-livros' %}">Adicionar</a>
+        <a href="logout/">Sair</a>
+        {% endblock %}
+        {% else %}
+        <a href="login/">Entrar</a>
+        {% endif %}
+        <div class="dot"></div>
+    </nav>
+</div>

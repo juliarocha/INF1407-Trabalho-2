@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Exclui Livro</title>
+    <link rel="stylesheet" href="{% static 'default.css' %}">
+</head>
+
+<body>
+    {% include 'livros/links.html' %}
+    <div class="container">
+        <form class="card" method="post">
+            {% csrf_token %}
+            <p class="text-muted"> Confirma a exclusão de {{livro.name}}?</p>
+            <input type="submit" value="Excluir">
+        </form>
+        <button id="cancelButton">Cancelar</button>
+    </div>
+</body>
+
+</html>
+
+<script type="text/javascript">
+    document.getElementById("cancelButton").onclick = function () {
+        location.href = "/";
+    };
+</script>

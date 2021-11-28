@@ -1,37 +1,20 @@
 {% load static %}
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<!--
-Design by TEMPLATED
-http://templated.co
-Released for free under the Creative Commons Attribution License
-Name       : LadyTulip
-Description: A two-column, fixed-width design with dark color scheme.
-Version    : 1.0
-Released   : 20131127
--->
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title></title>
-<meta name="keywords" content="" />
-<meta name="description" content="" />
-<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
-<link href="{% static 'accounts.css'	%}" rel="stylesheet" type="text/css" media="all" />
-<link href="{% static 'fonts.css' %}" rel="stylesheet" type="text/css" media="all" />
-<!--[if IE 6]>
-<link href="{% static 'default_ie6.css' %}" rel="stylesheet" type="text/css" />
-<![endif]-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Registrar</title>
+    <link rel="stylesheet" href="{% static 'account.css' %}">
 </head>
 <body>
 
 
-    <div class="login-page">
-      <div class="form">
-        <form class="login-form form-group"method="post">
+    <div class="container">
+      <div class="card">
+        <form class="box"method="post">
           {% csrf_token %}
           {{ form.as_p }}
-          <button type="submit", class="btn btn-success">Register</button>
-          <p class="message">Alredy registered <a href="/login/">Login</a></p>
+          <input type="submit" value="Criar conta"></input>
+          <p class="text-muted">Já possui conta? <a href="/login/">Login</a></p>
         </form>
       </div>
     </div>
