@@ -1,1 +1,3 @@
-web: gunicorn Library.wsgi --log-file -
+web: gunicorn Library.wsgi:application --log-file - --log-level debug
+python manage.py collectstatic --noinput
+manage.py migrate
